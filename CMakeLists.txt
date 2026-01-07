@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 4.2.0)
+set(CMAKE_CXX_STANDARD 17)
 
 project(Renderer)
 
@@ -9,6 +10,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/out/bin)
 add_executable(${PROJECT_NAME}
 	./source/Source.cpp
 	./source/include/Utility.cpp
+	./source/include/ShaderHandler.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
