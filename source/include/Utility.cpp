@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-#include <GL/glew.h>
+#include "GL/glew.h"
 
 std::string ParseFile(const std::string& filePath) {
     std::fstream fileStream(filePath, std::ios_base::in);

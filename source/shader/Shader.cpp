@@ -36,14 +36,47 @@ int Shader::GetUniformLocation(const std::string& uniformName) const {
     }
 }
 
-int Shader::SetUniform4f(const std::string& uniformName, float v0, float v1, float v2, float v3) {
+int Shader::SetUniform1i(const std::string& uniformName, int value) const {
     Bind();
     int location = GetUniformLocation(uniformName);
     if (location == -1) {
         std::cout << "Uniform <" << uniformName << "> not found!" << std::endl;
         return -1;
     }
-    glUniform4f(location, v0, v1, v2, v3);
+    glUniform1i(location, value);
+    return 0;
+}
+
+int Shader::SetUniform1f(const std::string& uniformName, float value) const {
+    Bind();
+    int location = GetUniformLocation(uniformName);
+    if (location == -1) {
+        std::cout << "Uniform <" << uniformName << "> not found!" << std::endl;
+        return -1;
+    }
+    glUniform1f(location, value);
+    return 0;
+}
+
+int Shader::SetUniformVec4f(const std::string& uniformName, glm::vec4 value) const {
+    Bind();
+    int location = GetUniformLocation(uniformName);
+    if (location == -1) {
+        std::cout << "Uniform <" << uniformName << "> not found!" << std::endl;
+        return -1;
+    }
+    glUniform4f(location, value.x, value.y, value.z, value.w);
+    return 0;
+}
+
+int Shader::SetUniformMat4f(const std::string& uniformName, glm::mat4 value) const {
+    Bind();
+    int location = GetUniformLocation(uniformName);
+    if (location == -1) {
+        std::cout << "Uniform <" << uniformName << "> not found!" << std::endl;
+        return -1;
+    }
+    glUniformMatrix4fv(location, 1, GL_FALSE, &value[0][0]);
     return 0;
 }
 
